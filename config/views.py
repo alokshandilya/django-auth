@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
@@ -21,7 +22,7 @@ def registration_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("home")
+            return redirect("index")
     else:
         form = RegisterForm()  # empty form
 
@@ -32,4 +33,12 @@ def registration_view(request):
 
 # home page
 def index(request):
-    return render(request, "index.html")
+    if request.user.is_authenticated:
+        return render(request, "index.html")
+    return redirect("login")
+
+
+@login_required
+def profile(request):
+    context = {"user": request.user}
+    return render(request, "profile.html", context)
