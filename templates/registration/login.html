@@ -1,4 +1,4 @@
-{% extends 'registration/_base.html' %}
+{% extends '_base.html' %}
 
 {% block title %}Login{% endblock %}
 
@@ -13,6 +13,6 @@
 <a href="">Sign Up</a>
 <br />
 
-<a href="">Forgot password?</a>
+<a href="{% url 'password_reset' %}">Forgot password?</a>
 <br />
 {% endblock %}
