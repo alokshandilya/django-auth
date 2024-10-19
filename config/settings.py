@@ -140,3 +140,7 @@ EMAIL_HOST_USER = mail
 EMAIL_HOST_PASSWORD = mail_pass
 DEFAULT_FROM_EMAIL = mail
 EMAIL_SUBJECT_PREFIX = "Password Recovery: Django Task"
+
+
+LOGOUT_REDIRECT_URL = "index"
+LOGIN_REDIRECT_URL = "index"
